@@ -1,0 +1,98 @@
+{
+  "uid" : "c52f584133a9b784",
+  "name" : "We want to look for “RAET”",
+  "historyId" : "abcff50b4702933a7df0d0fe4409c3ab",
+  "time" : {
+    "start" : 1541044806424,
+    "stop" : 1541044812002,
+    "duration" : 5578
+  },
+  "status" : "broken",
+  "statusMessage" : "TypeError: step_impl() missing 1 required positional argument: 'keyword'\n",
+  "statusTrace" : "  File \"C:\\TestFramework\\python36\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n  File \"C:\\TestFramework\\python36\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "TypeError: step_impl() missing 1 required positional argument: 'keyword'\n",
+    "statusTrace" : "  File \"C:\\TestFramework\\python36\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n  File \"C:\\TestFramework\\python36\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n",
+    "steps" : [ {
+      "name" : "Given User open site http://www.google.com",
+      "time" : {
+        "start" : 1541044806425,
+        "stop" : 1541044809798,
+        "duration" : 3373
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "When Type <keywords> in google search box",
+      "time" : {
+        "start" : 1541044809798,
+        "stop" : 1541044812000,
+        "duration" : 2202
+      },
+      "status" : "broken",
+      "statusMessage" : "TypeError: step_impl() missing 1 required positional argument: 'keyword'\n",
+      "statusTrace" : "  File \"C:\\TestFramework\\python36\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n  File \"C:\\TestFramework\\python36\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "c93f65891b37bf3",
+        "name" : ".table",
+        "source" : "c93f65891b37bf3.csv",
+        "type" : "text/csv",
+        "size" : 23
+      } ],
+      "parameters" : [ ],
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : true,
+      "stepsCount" : 0,
+      "hasContent" : true
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 2,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "Integration"
+  }, {
+    "name" : "tag",
+    "value" : "TableSearch"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "Test Google Search Box"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "Integration", "TableSearch" ]
+  },
+  "source" : "c52f584133a9b784.json",
+  "parameterValues" : [ ]
+}

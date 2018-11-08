@@ -1,0 +1,13 @@
+[ {
+  "values" : [ "VARIABLE DE JENKINS JOB_NAME" ],
+  "name" : "Aplicacion"
+}, {
+  "values" : [ "Homologación" ],
+  "name" : "Ambiente"
+}, {
+  "values" : [ "VARIABLE DE JENKINS NODE_NAME" ],
+  "name" : "Nodo"
+}, {
+  "values" : [ "CHROME_headless" ],
+  "name" : "Browser"
+} ]

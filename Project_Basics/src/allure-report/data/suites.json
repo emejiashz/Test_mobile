@@ -1,0 +1,29 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "We want to look for “RAET” word in google main page and check if amount of results is bigger than 100000",
+    "uid" : "371100d472b6fc5f",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1541256928918,
+      "stop" : 1541256936048,
+      "duration" : 7130
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "We want to look for “RAET”",
+    "uid" : "f5340df5e9e3f093",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "skipped",
+    "time" : {
+      "start" : 1541256936068,
+      "stop" : 1541256936078,
+      "duration" : 10
+    },
+    "flaky" : true,
+    "parameters" : [ ]
+  } ]
+}

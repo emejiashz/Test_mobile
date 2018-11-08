@@ -1,0 +1,21 @@
+[ {
+  "uid" : "f5340df5e9e3f093",
+  "name" : "We want to look for “RAET”",
+  "time" : {
+    "start" : 1541256936068,
+    "stop" : 1541256936078,
+    "duration" : 10
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "371100d472b6fc5f",
+  "name" : "We want to look for “RAET” word in google main page and check if amount of results is bigger than 100000",
+  "time" : {
+    "start" : 1541256928918,
+    "stop" : 1541256936048,
+    "duration" : 7130
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

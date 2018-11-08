@@ -1,0 +1,18 @@
+﻿<environment>
+    <parameter>
+        <key>Aplicacion</key>
+        <value>VARIABLE DE JENKINS JOB_NAME</value>
+    </parameter>
+    <parameter>
+        <key>Browser</key>
+        <value>CHROME_headless</value>
+    </parameter>
+    <parameter>
+        <key>Ambiente</key>
+        <value>Homologación</value>
+    </parameter>
+    <parameter>
+        <key>Nodo</key>
+        <value>VARIABLE DE JENKINS NODE_NAME</value>
+    </parameter>
+</environment>

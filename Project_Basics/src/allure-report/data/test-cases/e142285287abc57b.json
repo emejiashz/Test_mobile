@@ -1,0 +1,92 @@
+{
+  "uid" : "e142285287abc57b",
+  "name" : "We want to look for “RAET”",
+  "historyId" : "abcff50b4702933a7df0d0fe4409c3ab",
+  "time" : {
+    "start" : 1541041725023,
+    "stop" : 1541041730460,
+    "duration" : 5437
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given User open site http://www.google.com",
+      "time" : {
+        "start" : 1541041725023,
+        "stop" : 1541041728784,
+        "duration" : 3761
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "When Type keyword in google search box",
+      "time" : {
+        "start" : 1541041728784,
+        "stop" : 1541041730460,
+        "duration" : 1676
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "32db092314526ce9",
+        "name" : ".table",
+        "source" : "32db092314526ce9.csv",
+        "type" : "text/csv",
+        "size" : 22
+      } ],
+      "parameters" : [ ],
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : true
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 2,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "TableSearch"
+  }, {
+    "name" : "tag",
+    "value" : "Integration"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "Test Google Search Box"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "TableSearch", "Integration" ]
+  },
+  "source" : "e142285287abc57b.json",
+  "parameterValues" : [ ]
+}

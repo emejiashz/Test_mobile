@@ -1,0 +1,104 @@
+{
+  "uid" : "7581fc2e9203e074",
+  "name" : "We want to look for “RAET” word in google main page and check if amount of results is bigger than 100000",
+  "historyId" : "2c573f05316612833fde5c7733e01362",
+  "time" : {
+    "start" : 1541038089288,
+    "stop" : 1541038094965,
+    "duration" : 5677
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given User open Google main site",
+      "time" : {
+        "start" : 1541038089303,
+        "stop" : 1541038092804,
+        "duration" : 3501
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "And Type RAET in google search box",
+      "time" : {
+        "start" : 1541038092804,
+        "stop" : 1541038094420,
+        "duration" : 1616
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "Then Query results are under 10000",
+      "time" : {
+        "start" : 1541038094420,
+        "stop" : 1541038094965,
+        "duration" : 545
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "fef521fad6f42084",
+        "name" : "Then Query results are under 1000",
+        "source" : "fef521fad6f42084.png",
+        "type" : "image/png",
+        "size" : 202644
+      } ],
+      "parameters" : [ ],
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : true
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 3,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "SearchBox"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "Test Google Search Box"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "SearchBox" ]
+  },
+  "source" : "7581fc2e9203e074.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,33 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "Test Google Search Box",
+    "children" : [ {
+      "name" : "We want to look for “RAET” word in google main page and check if amount of results is bigger than 100000",
+      "uid" : "371100d472b6fc5f",
+      "parentUid" : "e3258b5163e80d7622ff0917a2897cf0",
+      "status" : "passed",
+      "time" : {
+        "start" : 1541256928918,
+        "stop" : 1541256936048,
+        "duration" : 7130
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "We want to look for “RAET”",
+      "uid" : "f5340df5e9e3f093",
+      "parentUid" : "e3258b5163e80d7622ff0917a2897cf0",
+      "status" : "skipped",
+      "time" : {
+        "start" : 1541256936068,
+        "stop" : 1541256936078,
+        "duration" : 10
+      },
+      "flaky" : true,
+      "parameters" : [ ]
+    } ],
+    "uid" : "e3258b5163e80d7622ff0917a2897cf0"
+  } ]
+}

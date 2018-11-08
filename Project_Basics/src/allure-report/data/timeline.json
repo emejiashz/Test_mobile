@@ -1,0 +1,29 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "We want to look for “RAET”",
+    "uid" : "f5340df5e9e3f093",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "skipped",
+    "time" : {
+      "start" : 1541256936068,
+      "stop" : 1541256936078,
+      "duration" : 10
+    },
+    "flaky" : true,
+    "parameters" : [ ]
+  }, {
+    "name" : "We want to look for “RAET” word in google main page and check if amount of results is bigger than 100000",
+    "uid" : "371100d472b6fc5f",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1541256928918,
+      "stop" : 1541256936048,
+      "duration" : 7130
+    },
+    "flaky" : false,
+    "parameters" : [ ]
+  } ]
+}
