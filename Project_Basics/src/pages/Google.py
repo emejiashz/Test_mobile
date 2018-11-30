@@ -9,7 +9,7 @@ class Inicio:
 
     img_Logo_xpath           = "//*[contains (@id, 'hplogo')]"
     #"//*[@id='hplogo']/a/img"
-    txt_busqueda_xpath        = "//input[@name='X']"
+    txt_busqueda_xpath        = "//input[@name='q']"
     
     txt_resultStats_xpath = "//*[@id='resultStats']"
     

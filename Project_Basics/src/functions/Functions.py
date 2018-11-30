@@ -3,6 +3,7 @@
 import time, os, shutil, io, allure, openpyxl
 from PIL import Image
 from selenium import webdriver
+from appium import webdriver as AppiumWebDriver
 from selenium.webdriver.chrome.options import Options as OpcionesChrome
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.support import expected_conditions as EC
@@ -21,14 +22,14 @@ import pytest
 diaGlobal= time.strftime("%Y-%m-%d")  # formato aaaa/mm/dd
 horaGlobal = time.strftime("%H%M%S")  # formato 24 houras
 
-class Functions():
+class Functions(Inicializar):
 
-    def Xpath_Elements(self, XPATH):
+    def xpath_elements(self, XPATH):
         elements = self.driver.find_element_by_xpath(XPATH)
         print ("Xpath_Elements: Se interactuo con el elemento " + XPATH)
         return elements
         
-    def ID_Elements(self, ID):
+    def id_elements(self, ID):
         elements = self.driver.find_element_by_id(ID)
         print ("Xpath_Elements: Se interactuo con el elemento " + ID)
         return elements
@@ -45,18 +46,17 @@ class Functions():
 #       select by value 
 #       select.select_by_value('1')
 
-    def esperar_Xpath(self, XPATH): #Esperar que un elemento sea visible 
+    def esperar_xpath(self, XPATH): #Esperar que un elemento sea visible
         try:
             wait = WebDriverWait(self.driver, 10)
             wait.until(EC.visibility_of_element_located((By.XPATH, XPATH)))
-            print (u"esperar_Xpath: Se mostrÃ³ el elemento " + XPATH)
+            print (u"esperar_Xpath: Se mostro el elemento " + XPATH)
             return True
 
         except TimeoutException:
             print (u"esperar_Xpath: No presente " + XPATH)
             return False
-        
-        
+
     
     def esperar_CSS(self, CSS):
         try:
@@ -73,9 +73,8 @@ class Functions():
     ##########################################################################
     ##############       -=_JS     CLICKS _=-              ###################
     ##########################################################################
-         
-         
-    def JS_Click_Xpath(self, xpath):
+
+    def js_click_xpath(self, xpath):
         try:
             localizador = self.driver.find_element_by_xpath(xpath)
             self.driver.execute_script("arguments[0].click();", localizador)
@@ -86,29 +85,44 @@ class Functions():
             print ("JS_Click_Xpath: No se encontro " +  xpath)
             return False
             
-    def JS_Click_CSS(self, css):
+    def js_click_ccs(self, css):
         localizador = self.driver.find_element_by_css_selector(css)
         self.driver.execute_script("arguments[0].click();", localizador)
         
     ##########################################################################
     ##############   -=_JS     IR     A _=-                ###################
     ##########################################################################
+
     def ir_a_xpath(self, elemento):
         try:
-            localizador = self.driver.find_element(By.XPATH, elemento)  
+            localizador = self.driver.find_element(By.XPATH, elemento)
             self.driver.execute_script("arguments[0].scrollIntoView();", localizador)
-            
+
         except TimeoutException:
-            
+
             print (u"ir_a_xpath: No presente " + elemento)
             return False
-        
+
         print (u"ir_a_xpath: Se desplazÃ³ al elemento, " + elemento)
+        return True
+
+    def ir_a_id(self, elemento):
+        try:
+            localizador = self.driver.find_element(By.ID, elemento)
+            self.driver.execute_script("arguments[0].scrollIntoView();", localizador)
+
+        except TimeoutException:
+
+            print(u"ir_a_xpath: No presente " + elemento)
+            return False
+
+        print(u"ir_a_xpath: Se desplazÃ³ al elemento, " + elemento)
         return True
     
     ##########################################################################
-    ##############    -=_ACTION CHAINS _=-                ###################
+    ##############    -=_ACTION CHAINS _=-                ####################
     ##########################################################################
+
     def mouse_over_xpath(self, xpath):
         element = self.driver.find_element_by_xpath(xpath)
         action = ActionChains(self.driver)
@@ -120,8 +134,9 @@ class Functions():
         action.move_to_element(element).perform() 
         
     ##########################################################################
-    ##############    -=_VERIFICACION _=-                ###################
+    ##############    -=_VERIFICACION _=-                #####################
     ##########################################################################
+
     def verificar_xpath(self, xpath): #devuelve true o false
         try:
             self.driver.find_element_by_xpath(xpath)
@@ -132,7 +147,7 @@ class Functions():
         return True      
     
     
-    def verificar_CSS(self, CSS): #devuelve true o false
+    def verificar_ccs(self, CSS): #devuelve true o false
         try:
             self.driver.find_element_by_css_selector(CSS)
         except NoSuchElementException:
@@ -140,8 +155,26 @@ class Functions():
             return False
         print (u"Verificar: Se visualizo el elemento, "+ CSS)
         return True
+
+    def verificar_id(self, id):  # devuelve true o false
+        try:
+            self.driver.find_element_by_id(id)
+        except NoSuchElementException:
+            print(u"Verificar: Elemento No presente " + id)
+            return False
+        print(u"Verificar: Se visualizo el elemento, " + id)
+        return True
+
+    def verificar_ccs(self, CSS):  # devuelve true o false
+        try:
+            self.driver.find_element_by_css_selector(CSS)
+        except NoSuchElementException:
+            print(u"Verificar: Elemento No presente " + CSS)
+            return False
+        print(u"Verificar: Se visualizo el elemento, " + CSS)
+        return True
     
-    def verificarTexto_xpath(self, xpath, TEXTO): #devuelve true o false
+    def verificar_texto_xpath(self, xpath, TEXTO): #devuelve true o false
         try:
             wait = WebDriverWait(self.driver, 15)
             wait.until(EC.text_to_be_present_in_element((By.XPATH, xpath), TEXTO))
@@ -150,9 +183,11 @@ class Functions():
             return False
         print (u"Verificar Texto: Se visualizÃ³ en, " + xpath + " el texto, " + TEXTO)
         return True
-    
+
+    ##########################################################################
     ##############   -=_CAPTURA DE PANTALLA_=-   #############################
     ##########################################################################
+
     def crear_path(self):
         def hora_Actual():
             hora = time.strftime("%H%M%S")  # formato 24 horas
@@ -173,7 +208,7 @@ class Functions():
 
         return path
 
-    def capturar_Pantalla(self):
+    def capturar_pantalla(self):
         def hora_Actual():
             hora = time.strftime("%H%M%S")  # formato 24 horas
             return hora
@@ -199,22 +234,8 @@ class Functions():
          
         return img  
     
-    def CapturarPantalla(self, Descripcion):
-        path = Functions.crear_path(self)
-        TestCase = self.__class__.__name__
-        def hora_Actual():
-            hora = time.strftime("%H%M%S")  # formato 24 horas
-            return hora
-        img = path + TestCase + "_(" + str(hora_Actual()) + ")" + ".png"
-        self.driver.get_screenshot_as_file(img)
-        print(img)
-        CAPTURA = Image.open(img, mode="r")
-        ImageProcess = io.BytesIO()
-        CAPTURA.save(ImageProcess, format= "PNG")
-        ImageProcess = ImageProcess.getvalue()
-        allure.attach(ImageProcess, Descripcion, attachment_type=allure.attachment_type.PNG)
 
-    def Captura(self, Descripcion, driver):
+    def captura(self, Descripcion):
         path = Functions.crear_path(self)
         TestCase = self.__class__.__name__
         def hora_Actual():
@@ -240,7 +261,7 @@ class Functions():
         except: 
             print ("waitStopLoad: Carga Finalizada ... ")
             
-    def Modificar_XML_Enviroments(self):
+    def modificar_XML_enviroments(self):
 
         print ("--------------------------------------")
         print ("Estableciendo Datos del Reporte...")
@@ -283,8 +304,8 @@ class Functions():
         
         shutil.copy("../data/environment.xml","../allure-results")           
 
-#Excel 
-    def LeerCelda(self, celda):
+#Excel
+    def leer_celda(self, celda):
         wb = openpyxl.load_workbook(Inicializar.Excel)
         sheet = wb["DataTest"]
         valor= str(sheet[celda].value)
@@ -294,7 +315,7 @@ class Functions():
         print (u"------------------------------------")
         return valor
     
-    def EscribirCelda(self, celda, valor):
+    def escribir_celda(self, celda, valor):
         wb = openpyxl.load_workbook(Inicializar.Excel)
         hoja = wb["DataTest"]
         hoja[celda]= valor
@@ -305,9 +326,10 @@ class Functions():
         print (u"------------------------------------")
         
     ##########################################################################
-    ##############   -=_ASSERTION_=-   #############################
-    ##########################################################################       
-    def Assert_xpath(self, xpath):
+    ##############   -=_ASSERTION_=-   #######################################
+    ##########################################################################
+
+    def assert_xpath(self, xpath):
         try:
             
             wait = WebDriverWait(self.driver, 2)
@@ -318,14 +340,28 @@ class Functions():
             self.assertTrue(False)
             
         print (u"Assert_xpath: Se visualizo el elemento, "+ xpath)
-        self.assertTrue(True)      
-        
-        
+        self.assertTrue(True)
+
+    def assert_id(self, id):
+        try:
+
+            wait = WebDriverWait(self.driver, 2)
+            wait.until(EC.visibility_of_element_located((By.ID, id)))
+
+        except TimeoutException:
+            print(u"Assert_xpath: Elemento No presente " + id)
+            self.assertTrue(False)
+
+        print(u"Assert_xpath: Se visualizo el elemento, " + id)
+        self.assertTrue(True)
+
+
     ##########################################################################
     ##############   -=_INICIALIZAR DRIVERS_=-   #############################
     ##########################################################################
+
 ##Check
-    def abrir_Navegador(self, URL):
+    def abrir_navegador(self, URL):
         navegador = Inicializar.NAVEGADOR
         print ("----------------")
         print (navegador)
@@ -366,50 +402,58 @@ class Functions():
             pytest.skip("Define el DRIVER")
             exit
 
-    def Tap_Action(self, driver, X, Y):
-        self.driver = driver
-        TouchAction(driver).tap([(X, Y)]).perform()
+    ##########################################################################
+    ##############   -=_        APPIUM      _=-   ############################
+    ##########################################################################
 
-    def AccID_elements_tap(self, driver, AccID):
-        self.driver = driver
-        el = driver.find_element_by_accessibility_id(AccID)
+    def appium_connect(self, host):
+        desired_caps = self.inicializar_mobile_capabilities()
+        print("----------------")
+        print("----------------")
+        print(desired_caps)
+        print("---------------")
+        print("----------------")
+        self.driver = AppiumWebDriver.Remote(host + "/wd/hub", desired_caps)
+        return self.driver
+
+
+    def tap_action(self, X, Y):
+        TouchAction(self.driver).tap([(X, Y)]).perform()
+
+    def acc_id_elements_tap(self, AccID):
+        el = self.driver.find_element_by_accessibility_id(AccID)
         action = TouchAction(self.driver)
         action.tap(el).perform()
 
-    def ID_elements_tap(self, driver, ID):
-        self.driver = driver
-        el = driver.find_element_by_id(ID)
+    def id_elements_tap(self, ID):
+        el = self.driver.find_element_by_id(ID)
         action = TouchAction(self.driver)
         action.tap(el).perform()
 
-    def Xpath_elements_tap(self, driver, xpath):
-        self.driver = driver
-        el = driver.find_element_by_xpath(xpath)
+    def xpath_elements_tap(self, xpath):
+        el = self.driver.find_element_by_xpath(xpath)
         action = TouchAction(self.driver)
         action.tap(el).perform()
 
-    def ID_elements_click(self, driver, ID):
-        self.driver = driver
-        locator = driver.find_element_by_id(ID)
+    def id_elements_click(self, ID):
+        locator = self.driver.find_element_by_id(ID)
         self.assertTrue(locator.is_displayed())
         locator.click()
 
-    def AccID_elements_click(self, driver, AccID):
-        self.driver = driver
-        locator = driver.find_element_by_accessibility_id(AccID)
+    def acc_id_elements_click(self, AccID):
+        locator = self.driver.find_element_by_accessibility_id(AccID)
         self.assertTrue(locator.is_displayed())
         locator.click()
 
-    def Xpath_elements_click(self, driver, xpath):
-        self.driver = driver
-        locator = driver.find_element_by_xpath(xpath)
+    def xpath_elements_click(self, xpath):
+        locator = self.driver.find_element_by_xpath(xpath)
         self.assertTrue(locator.is_displayed())
         locator.click()
 
     # -------------------------------------------------------------------------------------------#
-    def Esperar_ID(self, driver, ID):  # Esperar que un elemento sea visible
+    def esperar_id(self, ID):  # Esperar que un elemento sea visible
         try:
-            wait = WebDriverWait(driver, 10)
+            wait = WebDriverWait(self.driver, 10)
             wait.until(EC.visibility_of_element_located((By.ID, ID)))
 
         except TimeoutException:
@@ -420,25 +464,13 @@ class Functions():
         print(u"Esperar_ID: Se mostró el elemento " + ID)
         return True
 
-    def Esperar_xpath(self, driver, xpath):  # Esperar que un elemento sea visible
-        try:
-            wait = WebDriverWait(driver, 10)
-            wait.until(EC.visibility_of_element_located((By.XPATH, xpath)))
 
-        except TimeoutException:
-
-            print(u"Esperar_xpath: No pesente")
-            return False
-
-        print(u"Esperar_xpath: Se mostró el elemento " + xpath)
-        return True
 
     # -------------------------------------------------------------------------------------------#
-    def Get_to_text_Element_ID(self, driver, ID):
-        driver = self.driver
+    def get_to_text_element_id(self, ID):
         try:
 
-            texto = driver.find_element(By.ID, ID).text
+            texto = self.driver.find_element(By.ID, ID).text
 
         except NoSuchElementException:
 
@@ -449,11 +481,10 @@ class Functions():
 
         return texto
 
-    def Get_to_text_Element_xpath(self, driver, xpath):
-        driver = self.driver
+    def get_to_text_element_xpath(self, xpath):
         try:
 
-            texto = driver.find_element(By.XPATH, xpath).text
+            texto = self.driver.find_element(By.XPATH, xpath).text
 
         except NoSuchElementException:
 
@@ -464,11 +495,10 @@ class Functions():
 
         return texto
 
-    def Get_to_text_Element_AccID(self, driver, AccID):
-        driver = self.driver
+    def get_to_text_element_acc_id(self, driver, AccID):
         try:
 
-            texto = driver.find_element_by_accessibility_id(AccID).text
+            texto = self.driver.find_element_by_accessibility_id(AccID).text
 
         except NoSuchElementException:
 
@@ -481,30 +511,26 @@ class Functions():
 
     # -------------------------------------------------------------------------------------------#
 
-    def sendkeys_id(self, driver, ID, TEXT):
-        driver = self.driver
-        locator = driver.find_element_by_id(ID)
+    def sendkeys_id(self, ID, TEXT):
+        locator = self.driver.find_element_by_id(ID)
         locator.clear()
         locator.send_keys(TEXT)
 
-    def sendkeys_xpath(self, driver, xpath, TEXT):
-        driver = self.driver
-        locator = driver.find_element_by_xpath(xpath)
+    def sendkeys_xpath(self, xpath, TEXT):
+        locator = self.driver.find_element_by_xpath(xpath)
         locator.clear()
         locator.send_keys(TEXT)
 
-    def sendkeys_AccID(self, driver, AccID, TEXT):
-        driver = self.driver
-        locator = driver.find_element_by_accessibility_id(AccID)
+    def sendkeys_acc_id(self, AccID, TEXT):
+        locator = self.driver.find_element_by_accessibility_id(AccID)
         locator.clear()
         locator.send_keys(TEXT)
 
     # -------------------------------------------------------------------------------------------#
 
     # TouchAction(driver).press(x=885, y=578).move_to(x=-636, y=-30).release().perform()
-    def swipe_screen(self, driver, pressX, pressY, MoveX, MoveY):
-        driver = self.driver
-        screen = TouchAction(driver)
+    def swipe_screen(self, pressX, pressY, MoveX, MoveY):
+        screen = TouchAction(self.driver)
         screen.press(x=int(pressX), y=int(pressY))
         screen.move_to(x=int(MoveX), y=int(MoveY))
         screen.release().perform()

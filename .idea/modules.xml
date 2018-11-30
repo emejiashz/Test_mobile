@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Project_Basics/.idea/Project_Basics.iml" filepath="$PROJECT_DIR$/Project_Basics/.idea/Project_Basics.iml" />
+      <module fileurl="file://C:/TestTAutomationFramework/ws/Project_Basics/.idea/Project_Basics.iml" filepath="C:/TestTAutomationFramework/ws/Project_Basics/.idea/Project_Basics.iml" />
+      <module fileurl="file://C:/TestTAutomationFramework/ws/Test_Demo/.idea/Test_Demo.iml" filepath="C:/TestTAutomationFramework/ws/Test_Demo/.idea/Test_Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Workspace.iml" filepath="$PROJECT_DIR$/.idea/Workspace.iml" />
+    </modules>
+  </component>
+</project>

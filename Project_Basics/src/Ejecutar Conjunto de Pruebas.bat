@@ -9,7 +9,7 @@ echo. ##################### PRUEBAS #####################
 
 C:\TestFramework\python36\python.exe -m pytest set_xml.py 
 
-C:\TestFramework\python36\python.exe -m pytest tst_001.py --alluredir ..\allure-results
+C:\TestFramework\python36\python.exe -m pytest tst_002.py --alluredir ..\allure-results
 
 
 pause
