@@ -14,4 +14,4 @@ py==1.7.0
 pytest==3.9.3
 selenium==3.14.1
 six==1.11.0
-urllib3==1.24
+urllib3==1.24.2
